@@ -40,22 +40,28 @@ $ cd ~/projects
 $ git clone https://github.com/PavLikh/perfectPanel
 ```
 
+Проверить .env файл
+
 ####  .env файл
 
 #### MySQL settings
 DB_CONNECTION=mysql \
 DB_HOST=mysql \
 DB_PORT=3306 \
-DB_DATABASE=perfpanel \
+DB_DATABASE={project_name} \
 DB_USERNAME=sail \
 DB_PASSWORD=password
 
 #### Запуск контейнеров
 
-Вместо стандартного запуска контейнеров через ```docker-compose up``` можно исполнять файл ```up.sh```
-
 ```bash
-$ sudo ./up.sh
+$ composer install
+$ php artisan migrate
+$ php artisan db:seed
+$ npm i
+$ npm run dev
+$./vendor/bin/sail up
+
 ```
 
 > Перед запуском нужно убедиться что выключены другие контейнеры и службы, слушающие порт 80

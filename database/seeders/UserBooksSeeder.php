@@ -35,70 +35,70 @@ class UserBooksSeeder extends Seeder
             }
         }
 
-        // DB::table('user_books')->insert($userBooks);
-        DB::table('user_books')->insert(
-            [
-                [    
-                    'user_id' => 2,
-                    'book_id' => 2,
-                    'get_date' => '2020-01-01',
-                    'return_date' => '2020-01-05'
-                ],
-                [    
-                    'user_id' => 2,
-                    'book_id' => 3,
-                    'get_date' => '2020-01-01',
-                    'return_date' => '2020-01-05'
-                ],
-                [    
-                    'user_id' => 4,
-                    'book_id' => 5,
-                    'get_date' => '2020-01-01',
-                    'return_date' => '2020-01-05'
-                ],
-                [    
-                    'user_id' => 4,
-                    'book_id' => 6,
-                    'get_date' => '2020-01-01',
-                    'return_date' => '2020-01-05'
-                ],
-                [    
-                    'user_id' => 4,
-                    'book_id' => 7,
-                    'get_date' => '2020-01-01',
-                    'return_date' => '2020-01-05'
-                ],
-                [    
-                    'user_id' => 1,
-                    'book_id' => 2,
-                    'get_date' => '2020-01-01',
-                    'return_date' => '2020-01-05'
-                ],
-                [    
-                    'user_id' => 8,
-                    'book_id' => 2,
-                    'get_date' => '2020-01-01',
-                    'return_date' => '2021-01-05'
-                ],
-                [    
-                    'user_id' => 8,
-                    'book_id' => 3,
-                    'get_date' => '2020-01-01',
-                    'return_date' => '2021-01-05'
-                ],
-                [    
-                    'user_id' => 10,
-                    'book_id' => 7,
-                    'get_date' => '2021-01-01',
-                    'return_date' => '2021-01-05'
-                ],
-                [    
-                    'user_id' => 10,
-                    'book_id' => 8,
-                    'get_date' => '2021-01-01',
-                    'return_date' => '2021-01-05'
-                ]
-            ]
-        );
+        DB::table('user_books')->insert($userBooks);
+        // DB::table('user_books')->insert(
+        //     [
+        //         [    
+        //             'user_id' => 2,
+        //             'book_id' => 2,
+        //             'get_date' => '2020-01-01',
+        //             'return_date' => '2020-01-05'
+        //         ],
+        //         [    
+        //             'user_id' => 2,
+        //             'book_id' => 3,
+        //             'get_date' => '2020-01-01',
+        //             'return_date' => '2020-01-05'
+        //         ],
+        //         [    
+        //             'user_id' => 4,
+        //             'book_id' => 5,
+        //             'get_date' => '2020-01-01',
+        //             'return_date' => '2020-01-05'
+        //         ],
+        //         [    
+        //             'user_id' => 4,
+        //             'book_id' => 6,
+        //             'get_date' => '2020-01-01',
+        //             'return_date' => '2020-01-05'
+        //         ],
+        //         [    
+        //             'user_id' => 4,
+        //             'book_id' => 7,
+        //             'get_date' => '2020-01-01',
+        //             'return_date' => '2020-01-05'
+        //         ],
+        //         [    
+        //             'user_id' => 1,
+        //             'book_id' => 2,
+        //             'get_date' => '2020-01-01',
+        //             'return_date' => '2020-01-05'
+        //         ],
+        //         [    
+        //             'user_id' => 8,
+        //             'book_id' => 2,
+        //             'get_date' => '2020-01-01',
+        //             'return_date' => '2021-01-05'
+        //         ],
+        //         [    
+        //             'user_id' => 8,
+        //             'book_id' => 3,
+        //             'get_date' => '2020-01-01',
+        //             'return_date' => '2021-01-05'
+        //         ],
+        //         [    
+        //             'user_id' => 10,
+        //             'book_id' => 7,
+        //             'get_date' => '2021-01-01',
+        //             'return_date' => '2021-01-05'
+        //         ],
+        //         [    
+        //             'user_id' => 10,
+        //             'book_id' => 8,
+        //             'get_date' => '2021-01-01',
+        //             'return_date' => '2021-01-05'
+        //         ]
+        //     ]
+        // );
     }
 }
