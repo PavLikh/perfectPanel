@@ -1,0 +1,199 @@
+openapi: 3.0.3
+info:
+  title: Perfect Panel - Test assignment
+  version: 0.0.1
+servers:
+  - url: http://localhost:80/api/v1
+    description: Dev server
+    
+paths:
+  /test:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - new
+      summary: Test get
+      description: Test request
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Success'
+        'default':
+          description: Something unexpected
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Error'
+  /:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - new
+      summary: Rates
+      description: Get rates
+      parameters:
+        - name: method
+          in: query
+          description: Method name
+          required: true
+          schema:
+            type: string
+            default: rates
+            enum:
+             - rates
+             - testError
+        - name: parameter
+          in: query
+          description:  Currency codes
+          required: false
+          schema:
+            type: string
+            default: USD
+            enum:
+             - USD
+             - AUD
+             - BRL
+             - CAD
+             - CHF
+             - CLP
+             - CNY
+             - DKK
+             - EUR
+             - GBP
+             - HKD
+             - INR
+             - ISK
+             - JPY
+             - KRW
+             - NZD
+             - PLN
+             - RUB
+             - SEK
+             - SGD
+             - THB
+             - TRY
+             - TWD
+          example: USD
+      responses:
+        '200':
+          description: ssuccessful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Success'
+        'default':
+          description: Something unexpected
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Error'
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - new
+      summary: Convert
+      description: Get converted value
+      parameters:
+        - name: method
+          in: query
+          description: Method name
+          required: true
+          schema:
+            type: string
+            default: convert
+            enum:
+             - convert
+             - testError
+      requestBody:
+        description: Convert currency
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Convert'
+        required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Success'
+        'default':
+          description: Something unexpected
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Error'
+
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+
+  schemas:
+    Success:
+      type: object
+      required:
+       - status
+       - code
+       - data
+      properties:
+        status:
+          type: string
+          example: success
+        code:
+          type: integer
+          example: 200
+        data:
+          type: object
+    Convert:
+      type: object
+      required:
+        - currency_from
+        - currency_to
+        - value
+      properties:
+        currency_from:
+          type: string
+          example: BTC
+        currency_to:
+          type: string
+          example: USD
+        value:
+          type: string
+          example: 1.00
+    Error:
+      type: object
+      required:
+       - status
+       - code
+       - message
+      properties:
+        status:
+          type: string
+          example: error
+        code:
+          type: integer
+          example: 403
+        message:
+          type: string
+          example: Invalid token
