@@ -65,9 +65,9 @@ class ApiController extends Controller
             $codeFrom = request()->post('currency_from');
             $codeTo = request()->post('currency_to');
             $valueFrom = round(request()->post('value'), 2);
-
+            
             $rates = Http::get('https://blockchain.info/ticker')->json();
-
+            
             if ($codeFrom != $codeTo) {
                 if ($codeFrom == 'BTC') {
                     $rate = $rates[$codeTo]['last'];
@@ -76,6 +76,7 @@ class ApiController extends Controller
                     $rate = $rates[$codeFrom]['last'];
                     $valueTo = round(($valueFrom / $rate) * 1.02, 10);
                 } else {
+                    $error = 1;
                     $rate = 0;
                 }
                 $rate = round($rate * 1.02, 2);
@@ -83,7 +84,11 @@ class ApiController extends Controller
                 $rate = 1;
                 $valueTo = 1;
             }
+        } else {
+            $error = 1;
+        }
 
+        if (!$error) {
             $data = [
                 'currency_from' => $codeFrom,
                 'currency_to' => $codeTo,
@@ -91,13 +96,12 @@ class ApiController extends Controller
                 'converted_value' => $valueTo,
                 'rate' => $rate
             ];
-
+    
             $result = response([
                 "status" => "success",
                 "code" => 200,
                 "data" => $data
             ], 200);
-
         } else {
             $result = response([
                 "status" =>  "error",
