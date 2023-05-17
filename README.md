@@ -63,9 +63,9 @@ DB_PASSWORD=password
 $ composer install
 $ npm i
 $ npm run build
-$./vendor/bin/sail up
-$ php artisan migrate
-$ php artisan db:seed
+$ ./vendor/bin/sail up
+$ ./vendor/bin/sail artisan migrate
+$ ./vendor/bin/sail artisan db:seed
 
 ```
 
@@ -76,6 +76,17 @@ database/seeders/UserSeeder.php\
 можно изменить количество записей в таблице users
 ```php
 User::factory(30)->create();
+
+```
+
+Очистить таблицу
+```bash
+$ ./vendor/bin/sail artisan migrate:fresh
+
+```
+Заполнить таблицу сгенерированными данными
+```bash
+$ ./vendor/bin/sail artisan db:seed
 
 ```
 Файл для тестирования API: testapi.yaml
