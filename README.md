@@ -54,18 +54,18 @@ DB_PASSWORD=password
 
 #### Запуск контейнеров
 Установить пакеты,
+запустить контейнеры,
 подготовить БД,
 выполнить миграцию,
 заполнить таблицы данными,
-запустить контейнеры
 
 ```bash
 $ composer install
-$ php artisan migrate
-$ php artisan db:seed
 $ npm i
 $ npm run build
 $./vendor/bin/sail up
+$ php artisan migrate
+$ php artisan db:seed
 
 ```
 
