@@ -75,7 +75,7 @@ $ php artisan db:seed
 database/seeders/UserSeeder.php\
 можно изменить количество записей в таблице users
 ```php
-    User::factory(30)->create();
+User::factory(30)->create();
 
 ```
 Файл для тестирования API: testapi.yaml
